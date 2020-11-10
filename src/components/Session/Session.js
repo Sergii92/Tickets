@@ -1,48 +1,71 @@
-import React from 'react'
-import styled from 'styled-components';
+import React, { useState } from "react";
+import Modal from "react-modal";
 
-import img from '../../assets/img/img.png'
+import SessionPage from "../../pages/SessionPage/SessionPage";
+import styled from "styled-components";
 
+const SessionWrapper = styled.button`
+  border-radius: 5px;
+  width: 140px;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  outline: none;
+`;
+const Title = styled.p`
+  margin: 0;
+`;
+const Button = styled.button`
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  outline: none;
+`;
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    background: "#ccc",
+  },
+};
 
-const SessionWrapper = styled.div`
-border: 0px solid rgba(0, 0, 0, 0);
-border-radius: 5px;
-width:33%;
-max-width:300px;
-border:1px solid black;
-padding: 20px;
-text-align:center;
-background-color:black;
-color:white
+const Session = ({ sesssion }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const openModal = () => {
+    setModalIsOpen(!modalIsOpen);
+  };
 
+  const closeModal = () => {
+    setModalIsOpen(!modalIsOpen);
+    console.log("hei", modalIsOpen);
+  };
 
-`
-const SessionImageBlock = styled.div`
-width:95%;
-background-image:url(${img});
-background-position:center;
-background-repeat:no-repeat;
-
-border-radius:10px;
-height:300px;
-margin:0 auto;
-background-color:#9d9d9d;
-margin-bottom:10px;
-
-
-`
-
-
- const Session = () => {
   return (
-  <SessionWrapper> 
-    <SessionImageBlock/> 
-   <h2>SessionName</h2>
-  <h3>SessionTime</h3>
+    <SessionWrapper onClick={openModal}>
+      <Title>{sesssion.time}</Title>
+      <Title>{sesssion.name}</Title>
+      <Title>Free places:{sesssion.totalPlaces - sesssion.booked}</Title>
+      <Title>Booked places:{sesssion.booked}</Title>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        style={customStyles}
+      >
+        <Button onClick={closeModal}>Close</Button>
+        <SessionPage sesssion={sesssion} />
+      </Modal>
+    </SessionWrapper>
+  );
+};
 
-  </SessionWrapper>
-  )
-}
-
-
-export default Session
+export default Session;
