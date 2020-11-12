@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import {
   SessionPageWrapper,
@@ -10,14 +10,27 @@ import {
   CloseModalButton,
 } from "../styled/pages";
 
-const SessionPage = ({ sesssion, modalIsOpen, setModalIsOpen }) => {
+const SessionPage = ({ sesssion, modalIsOpen, setModalIsOpen, closeModal }) => {
+  const data = localStorage.getItem("modal");
+  localStorage.setItem("openModal", modalIsOpen);
+
+  console.log(data);
+  useEffect(() => {
+    const openModal = localStorage.getItem("openModal");
+    if (sesssion.name === data) {
+      setModalIsOpen(openModal);
+    }
+  }, []);
+
   return (
     <>
       {modalIsOpen ? (
         <SessionPageWrapper>
           <CloseModalButton
             aria-label="Close modal"
-            onClick={setModalIsOpen((prev) => !prev)}
+            onClick={() => {
+              closeModal();
+            }}
           />
           <MainBlock>
             <InfoBlock>

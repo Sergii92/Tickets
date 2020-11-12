@@ -29,14 +29,9 @@ export const SessionTitle = styled.p`
   margin: 0;
 `;
 
-export const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    background: "#ccc",
-  },
-};
+export const SessionBlock = styled.div`
+  width: 150px;
+  padding: 5px;
+  background-color: #ccc;
+  cursor: pointer;
+`;

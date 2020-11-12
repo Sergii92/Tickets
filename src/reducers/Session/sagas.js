@@ -14,7 +14,7 @@ export function* fetchSessions() {
     if (responce.status !== 200) {
       throw new Error("error");
     }
-    yield put(dataActions.fetchData(data));
+    yield put(dataActions.fetchDataOK(data));
   } catch (error) {
     console.log(error);
   }

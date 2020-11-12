@@ -11,9 +11,9 @@ import { MainPageWrapper } from "../styled/pages";
 const MainPage = () => {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(dataActions.fetchData());
-  // }, []);
+  useEffect(() => {
+    dispatch(dataActions.fetchData());
+  }, []);
 
   const data = useSelector(selectData);
 

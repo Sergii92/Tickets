@@ -6,7 +6,7 @@ const initialState = {
 
 export const dataReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case TYPES.FETCH_DATA:
+    case TYPES.FETCH_DATA_OK:
       return {
         ...state,
         data: payload,

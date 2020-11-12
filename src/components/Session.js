@@ -1,52 +1,41 @@
 import React, { useState } from "react";
-
-import Col from "react-bootstrap/Button";
-
 import SessionPage from "../pages/SessionPage";
-import { SessionTitle } from "../styled/components";
-
-export const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    background: "#ccc",
-  },
-};
+import { SessionTitle, SessionBlock } from "../styled/components";
+import { history } from "../constants/history";
 
 const Session = ({ sesssion }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const openModal = () => {
+
+  const openModal = (e) => {
+    history.push(`/session`);
     setModalIsOpen(!modalIsOpen);
+    localStorage.setItem("modal", sesssion.name);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(!modalIsOpen);
+
+    history.push(`/home`);
+    localStorage.clear();
   };
 
   return (
-    <Col onClick={openModal}>
-      <SessionTitle>{sesssion.time}</SessionTitle>
-      <SessionTitle>{sesssion.name}</SessionTitle>
-      <SessionTitle>
-        Free places:{sesssion.totalPlaces - sesssion.booked}
-      </SessionTitle>
-      <SessionTitle>Booked places:{sesssion.booked}</SessionTitle>
+    <>
+      <SessionBlock onClick={openModal}>
+        <SessionTitle>{sesssion.time}</SessionTitle>
+        <SessionTitle>{sesssion.name}</SessionTitle>
+        <SessionTitle>
+          Free places:{sesssion.totalPlaces - sesssion.booked}
+        </SessionTitle>
+        <SessionTitle>Booked places:{sesssion.booked}</SessionTitle>
+      </SessionBlock>
       <SessionPage
         sesssion={sesssion}
         modalIsOpen={modalIsOpen}
         setModalIsOpen={setModalIsOpen}
+        closeModal={closeModal}
       />
-      {/* <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
-        style={customStyles}
-      >
-        <Button onClick={closeModal} variant="danger">
-          Close
-        </Button>
-        <SessionPage sesssion={sesssion} />
-      </Modal> */}
-    </Col>
+    </>
   );
 };
 
