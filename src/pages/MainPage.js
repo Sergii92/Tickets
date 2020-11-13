@@ -19,11 +19,7 @@ const MainPage = () => {
 
   return (
     <MainPageWrapper>
-      {data &&
-        data.map((item) => {
-          console.log(item);
-          return <Day item={item} key={item.id}></Day>;
-        })}
+      {data && data.map((item) => <Day item={item} key={item.id} />)}
     </MainPageWrapper>
   );
 };

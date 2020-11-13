@@ -32,7 +32,7 @@ const SessionPage = ({ sesssion, modalIsOpen, setModalIsOpen, closeModal }) => {
 
   return (
     <>
-      {modalIsOpen ? (
+      {modalIsOpen && (
         <SessionPageWrapper>
           <CloseModalButton
             aria-label="Close modal"
@@ -74,7 +74,7 @@ const SessionPage = ({ sesssion, modalIsOpen, setModalIsOpen, closeModal }) => {
             </Space>
           </Row>
         </SessionPageWrapper>
-      ) : null}
+      )}
     </>
   );
 };

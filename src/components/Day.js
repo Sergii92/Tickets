@@ -11,9 +11,9 @@ const Day = ({ item }) => {
       </DayBlock>
       <SessionsBlock>
         {item &&
-          item.sessions.map((sesssion) => {
-            return <Session key={sesssion.id} sesssion={sesssion} />;
-          })}
+          item.sessions.map((sesssion) => (
+            <Session key={sesssion.id} sesssion={sesssion} />
+          ))}
       </SessionsBlock>
     </Block>
   );
