@@ -21,6 +21,7 @@ const MainPage = () => {
     <MainPageWrapper>
       {data &&
         data.map((item) => {
+          console.log(item);
           return <Day item={item} key={item.id}></Day>;
         })}
     </MainPageWrapper>
