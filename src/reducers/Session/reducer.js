@@ -1,27 +1,34 @@
 import { TYPES } from "./types";
-import { helperBoockedPlace, helperGetCarentPlaces } from "./helpers/index";
 
 const initialState = {
-  data: [],
+  days: [],
+  sessions: [],
+  sessionID: "",
   places: [],
 };
 
 export const dataReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case TYPES.FETCH_DATA_OK:
+    case TYPES.FETCH_DATA_SUCCESS:
       return {
         ...state,
-        data: payload,
+        days: payload,
       };
-    case TYPES.BOOK_PLACE:
+    case TYPES.FETCH_SESSIONS_SUCCESS:
       return {
         ...state,
-        data: helperBoockedPlace(state.data, payload),
+        sessions: payload,
       };
-    case TYPES.GET_CARENT_PLACES:
+
+    case TYPES.FETCH_PLACES:
       return {
         ...state,
-        places: helperGetCarentPlaces(state.data, payload),
+        places: payload,
+      };
+    case TYPES.GET_SESSION_ID:
+      return {
+        ...state,
+        sessionID: payload,
       };
     default:
       return state;
