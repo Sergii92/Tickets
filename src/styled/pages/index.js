@@ -68,11 +68,13 @@ export const CloseModalButton = styled(MdClose)`
 
 export const Space = styled.div`
   width: 600px;
-  height: 600px;
+  min-height: 200px;
   border: 1px solid black;
   border-radius: 10px;
   position: relative;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   box-sizind: border-box;
   left: 50%;
   top: 50%;
@@ -85,7 +87,7 @@ export const Сhair = styled.button`
   width: 50px;
   height: 50px;
   border: 1px solid black;
-  background-color: ${({ boocked }) => (boocked ? "red" : "green")};
+  background-color: ${({ boocked }) => (boocked === true ? "red" : "green")};
   margin-left: 5px;
   outline: none;
   cursor: pointer;

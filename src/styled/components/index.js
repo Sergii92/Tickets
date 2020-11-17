@@ -9,6 +9,7 @@ export const DayBlock = styled.div`
 export const Title = styled.p`
   color: white;
   font-size: 25px;
+  cursor: pointer;
 `;
 export const SessionsBlock = styled.div`
   width: 100%;

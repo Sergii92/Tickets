@@ -11,24 +11,29 @@ const Day = ({ day }) => {
   const [openSessions, setOpenSessions] = useState(false);
 
   const open = () => {
-    setOpenSessions(!openSessions);
-    dispatch(dataActions.fetchSession());
+    if (openSessions) {
+      setOpenSessions(!openSessions);
+    } else {
+      setOpenSessions(!openSessions);
+      dispatch(dataActions.fetchSession());
+    }
   };
 
   const sessionsData = useSelector(selectSessions);
-  console.log(sessionsData);
 
   return (
     <Block>
-      <DayBlock onClick={open}>
+      <DayBlock onClick={() => open()}>
         <Title>{day.name}</Title>
       </DayBlock>
       {openSessions && (
         <SessionsBlock>
-          {/* {item &&
-    item.sessions.map((sesssion) => (
-      <Session key={sesssion.id} sesssion={sesssion} />
-    ))} */}
+          {sessionsData &&
+            sessionsData
+              .filter((item) => item.daysId === day.id)
+              .map((sesssion) => (
+                <Session key={sesssion.id} sesssion={sesssion} />
+              ))}
         </SessionsBlock>
       )}
     </Block>

@@ -1,17 +1,26 @@
-export const helperBoockedPlace = (sessionsArray, id) => {
-  return sessionsArray.map((session) => session);
+export const helperBoockedPlace = (obj, arr, id) => {
+  const newPlaces = arr.map((place) => {
+    if (place.id === id) {
+      return {
+        ...place,
+        boocked: true,
+      };
+    } else {
+      return {
+        ...place,
+      };
+    }
+  });
+
+  return {
+    ...obj,
+    places: newPlaces,
+  };
 };
 
-export const helperGetCarentPlaces = (array, id) => {
-  return array.map((session) => {
-    return session.sessions.map((item) => {
-      if (item.id === id) {
-        return item.places.map((place) => {
-          return {
-            ...place,
-          };
-        });
-      }
-    });
-  });
+export const helperGetPlaces = (obj, arr) => {
+  return {
+    ...obj,
+    places: arr,
+  };
 };

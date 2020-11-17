@@ -1,10 +1,12 @@
 import { TYPES } from "./types";
-
+import { helperBoockedPlace, helperGetPlaces } from "./helpers/index";
 const initialState = {
   days: [],
   sessions: [],
   sessionID: "",
-  places: [],
+  ticket: {
+    places: [],
+  },
 };
 
 export const dataReducer = (state = initialState, { type, payload }) => {
@@ -20,15 +22,16 @@ export const dataReducer = (state = initialState, { type, payload }) => {
         sessions: payload,
       };
 
-    case TYPES.FETCH_PLACES:
+    case TYPES.FETCH_PLACES_SUCCESS:
       return {
         ...state,
-        places: payload,
+        ticket: helperGetPlaces(state.ticket, payload),
       };
-    case TYPES.GET_SESSION_ID:
+
+    case TYPES.BOOKED_PLACE:
       return {
         ...state,
-        sessionID: payload,
+        ticket: helperBoockedPlace(state.ticket, state.ticket.places, payload),
       };
     default:
       return state;

@@ -10,11 +10,11 @@ const Session = ({ sesssion }) => {
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const openModal = (e) => {
-    history.push(`/session`);
+  const openModal = (id) => {
     setModalIsOpen(!modalIsOpen);
-    localStorage.setItem("modal", sesssion.name);
-    dispatch(dataActions.getPlaces(sesssion.id));
+    dispatch(dataActions.fetchPlaces());
+    history.push(`/sesssion${id}`);
+    localStorage.setItem("modal", id);
   };
 
   const closeModal = () => {
@@ -26,17 +26,13 @@ const Session = ({ sesssion }) => {
 
   return (
     <>
-      <SessionBlock onClick={openModal}>
+      <SessionBlock onClick={() => openModal(sesssion.id)}>
         <SessionTitle>{sesssion.time}</SessionTitle>
-        <SessionTitle>{sesssion.name}</SessionTitle>
-        <SessionTitle>
-          Free places:{sesssion.totalPlaces - sesssion.booked}
-        </SessionTitle>
-        <SessionTitle>Booked places:{sesssion.booked}</SessionTitle>
+        <SessionTitle>{sesssion.sessionName}</SessionTitle>
       </SessionBlock>
       <SessionPage
-        sesssion={sesssion}
         modalIsOpen={modalIsOpen}
+        sesssion={sesssion}
         setModalIsOpen={setModalIsOpen}
         closeModal={closeModal}
       />

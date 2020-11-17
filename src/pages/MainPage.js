@@ -9,12 +9,11 @@ import { MainPageWrapper } from "../styled/pages";
 const MainPage = () => {
   const dispatch = useDispatch();
 
+  const days = useSelector(selectDays);
   useEffect(() => {
     dispatch(dataActions.fetchData());
   }, []);
 
-  const days = useSelector(selectDays);
-  console.log(days);
   return (
     <MainPageWrapper>
       {days && days.map((day) => <Day day={day} key={day.id} />)}

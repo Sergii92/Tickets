@@ -19,9 +19,19 @@ export const dataActions = {
     type: TYPES.FETCH_SESSIONS_SUCCESS,
     payload: data,
   }),
-
-  fetchPlacesSuccess: (data) => ({
+  fetchPlaces: () => ({
     type: TYPES.FETCH_PLACES,
+  }),
+  fetchPlacesSuccess: (data) => ({
+    type: TYPES.FETCH_PLACES_SUCCESS,
+    payload: data,
+  }),
+  bookedPlace: (id) => ({
+    type: TYPES.BOOKED_PLACE,
+    payload: id,
+  }),
+  putPlaces: (data) => ({
+    type: TYPES.PUT_PLACES,
     payload: data,
   }),
 };

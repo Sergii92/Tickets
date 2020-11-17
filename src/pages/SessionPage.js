@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { dataActions } from "../reducers/Session/actions";
+import { selectPlaces } from "../reducers/Session/selectors";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Button } from "react-bootstrap";
@@ -16,18 +17,28 @@ import {
 const SessionPage = ({ sesssion, modalIsOpen, setModalIsOpen, closeModal }) => {
   const dispatch = useDispatch();
 
-  const data = localStorage.getItem("modal");
-  localStorage.setItem("openModal", modalIsOpen);
+  const placesData = useSelector(selectPlaces);
+
+  const freePlaces = placesData
+    .filter((playces) => playces.sessionID === sesssion.id)
+    .filter((place) => place.boocked === false);
+
+  const sessionID = localStorage.getItem("id");
 
   useEffect(() => {
     const openModal = localStorage.getItem("openModal");
-    if (sesssion.name === data) {
+    if (sesssion.id === sessionID) {
       setModalIsOpen(openModal);
     }
   }, []);
 
   const selectchair = (id) => {
-    dispatch(dataActions.bookPlace(id));
+    console.log(id);
+    dispatch(dataActions.bookedPlace(id));
+  };
+
+  const pudPlacesData = (data) => {
+    dispatch(dataActions.putPlaces(data));
   };
 
   return (
@@ -42,10 +53,11 @@ const SessionPage = ({ sesssion, modalIsOpen, setModalIsOpen, closeModal }) => {
           />
           <Row>
             <Col>
-              <Info>{sesssion.name}</Info>
+              <Info>{sesssion.sessionName}</Info>
               <Info>Начало сеанса:{sesssion.time}</Info>
               <Info>
-                Свободных мест {sesssion.totalPlaces - sesssion.booked}
+                Свободных мест:
+                {freePlaces.length}
               </Info>
             </Col>
             <Col>
@@ -55,18 +67,26 @@ const SessionPage = ({ sesssion, modalIsOpen, setModalIsOpen, closeModal }) => {
           <Row>
             <Space>
               <Row>
-                {sesssion.places.map((place) => {
-                  return (
-                    <Сhair
-                      key={place.id}
-                      onClick={() => selectchair(place.id)}
-                    ></Сhair>
-                  );
-                })}
+                {placesData &&
+                  placesData
+                    .filter((places) => places.sessionID === sesssion.id)
+                    .map((place) => {
+                      return (
+                        <Сhair
+                          key={place.id}
+                          onClick={() => selectchair(place.id)}
+                          boocked={place.boocked}
+                        ></Сhair>
+                      );
+                    })}
               </Row>
               <Row>
                 <Col>
-                  <Button variant="primary" size="lg">
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    onClick={() => pudPlacesData(placesData)}
+                  >
                     Reserve
                   </Button>
                 </Col>
