@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { dataActions } from "../reducers/Session/actions";
-import { selectDays } from "../reducers/Session/selectors";
 
 import Day from "../components/Day";
+
+import { dataActions, selectDays } from "../redux/ducks/session";
+
 import { MainPageWrapper } from "../styled/pages";
 
 const MainPage = () => {
@@ -16,7 +17,7 @@ const MainPage = () => {
 
   return (
     <MainPageWrapper>
-      {days && days.map((day) => <Day day={day} key={day.id} />)}
+      {days && days.map((day: any) => <Day day={day} key={day.id} />)}
     </MainPageWrapper>
   );
 };

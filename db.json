@@ -35,42 +35,42 @@
       "time": "10:00",
       "id": 11,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam possimus quaerat ipsa dolor nihil cum ullam iste culpa veniam, magni a neque beatae consequatur totam eaque maxime aperiam illum molestiae.",
-      "sessionName": "Hello "
+      "sessionName": "Sunday session1 "
     },
     {
       "daysId": 1,
       "time": "12:00",
       "id": 12,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam possimus quaerat ipsa dolor nihil cum ullam iste culpa veniam, magni a neque beatae consequatur totam eaque maxime aperiam illum molestiae.",
-      "sessionName": "QWERTY "
+      "sessionName": "Sunday session2 "
     },
     {
       "daysId": 1,
       "time": "14:00",
       "id": 13,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam possimus quaerat ipsa dolor nihil cum ullam iste culpa veniam, magni a neque beatae consequatur totam eaque maxime aperiam illum molestiae.",
-      "sessionName": "QWERTY "
+      "sessionName": "Sunday session3 "
     },
     {
       "daysId": 1,
       "time": "16:00",
       "id": 14,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam possimus quaerat ipsa dolor nihil cum ullam iste culpa veniam, magni a neque beatae consequatur totam eaque maxime aperiam illum molestiae.",
-      "sessionName": "QWERTY "
+      "sessionName": "Sunday session4 "
     },
     {
       "daysId": 1,
       "time": "18:00",
       "id": 15,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam possimus quaerat ipsa dolor nihil cum ullam iste culpa veniam, magni a neque beatae consequatur totam eaque maxime aperiam illum molestiae.",
-      "sessionName": "QWERTY "
+      "sessionName": "Sunday session5 "
     },
     {
       "daysId": 1,
       "time": "20:00",
       "id": 16,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam possimus quaerat ipsa dolor nihil cum ullam iste culpa veniam, magni a neque beatae consequatur totam eaque maxime aperiam illum molestiae.",
-      "sessionName": "QWERTY "
+      "sessionName": "Sunday session6 "
     },
     {
       "daysId": 2,
@@ -81,7 +81,7 @@
     },
     {
       "daysId": 2,
-      "time": "22:00",
+      "time": "12:00",
       "id": 22,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam possimus quaerat ipsa dolor nihil cum ullam iste culpa veniam, magni a neque beatae consequatur totam eaque maxime aperiam illum molestiae.",
       "sessionName": "QWERTY "
@@ -123,7 +123,7 @@
     },
     {
       "daysId": 3,
-      "time": "22:00",
+      "time": "12:00",
       "id": 32,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam possimus quaerat ipsa dolor nihil cum ullam iste culpa veniam, magni a neque beatae consequatur totam eaque maxime aperiam illum molestiae.",
       "sessionName": "QWERTY "
@@ -165,7 +165,7 @@
     },
     {
       "daysId": 4,
-      "time": "22:00",
+      "time": "12:00",
       "id": 42,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam possimus quaerat ipsa dolor nihil cum ullam iste culpa veniam, magni a neque beatae consequatur totam eaque maxime aperiam illum molestiae.",
       "sessionName": "QWERTY "
@@ -207,7 +207,7 @@
     },
     {
       "daysId": 5,
-      "time": "22:00",
+      "time": "12:00",
       "id": 52,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam possimus quaerat ipsa dolor nihil cum ullam iste culpa veniam, magni a neque beatae consequatur totam eaque maxime aperiam illum molestiae.",
       "sessionName": "QWERTY "
@@ -249,7 +249,7 @@
     },
     {
       "daysId": 6,
-      "time": "22:00",
+      "time": "12:00",
       "id": 62,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam possimus quaerat ipsa dolor nihil cum ullam iste culpa veniam, magni a neque beatae consequatur totam eaque maxime aperiam illum molestiae.",
       "sessionName": "QWERTY "
@@ -291,7 +291,7 @@
     },
     {
       "daysId": 7,
-      "time": "22:00",
+      "time": "12:00",
       "id": 72,
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam possimus quaerat ipsa dolor nihil cum ullam iste culpa veniam, magni a neque beatae consequatur totam eaque maxime aperiam illum molestiae.",
       "sessionName": "QWERTY "
@@ -331,17 +331,17 @@
         {
           "sessionID": 11,
           "id": 111,
-          "boocked": true
+          "boocked": false
         },
         {
           "sessionID": 11,
           "id": 112,
-          "boocked": false
+          "boocked": true
         },
         {
           "sessionID": 11,
           "id": 113,
-          "boocked": false
+          "boocked": true
         },
         {
           "sessionID": 11,
@@ -366,17 +366,17 @@
         {
           "sessionID": 12,
           "id": 122,
-          "boocked": false
+          "boocked": true
         },
         {
           "sessionID": 12,
           "id": 123,
-          "boocked": false
+          "boocked": true
         },
         {
           "sessionID": 12,
           "id": 124,
-          "boocked": false
+          "boocked": true
         },
         {
           "sessionID": 12,
@@ -396,7 +396,7 @@
         {
           "sessionID": 13,
           "id": 132,
-          "boocked": false
+          "boocked": true
         },
         {
           "sessionID": 13,
@@ -416,7 +416,7 @@
         {
           "sessionID": 13,
           "id": 136,
-          "boocked": false
+          "boocked": true
         },
         {
           "sessionID": 14,
@@ -786,12 +786,12 @@
         {
           "sessionID": 34,
           "id": 342,
-          "boocked": false
+          "boocked": true
         },
         {
           "sessionID": 34,
           "id": 343,
-          "boocked": false
+          "boocked": true
         },
         {
           "sessionID": 34,
@@ -906,7 +906,7 @@
         {
           "sessionID": 42,
           "id": 422,
-          "boocked": false
+          "boocked": true
         },
         {
           "sessionID": 42,
@@ -936,17 +936,17 @@
         {
           "sessionID": 43,
           "id": 432,
-          "boocked": false
+          "boocked": true
         },
         {
           "sessionID": 43,
           "id": 433,
-          "boocked": false
+          "boocked": true
         },
         {
           "sessionID": 43,
           "id": 434,
-          "boocked": false
+          "boocked": true
         },
         {
           "sessionID": 43,
@@ -956,7 +956,7 @@
         {
           "sessionID": 43,
           "id": 436,
-          "boocked": false
+          "boocked": true
         },
         {
           "sessionID": 44,

@@ -2,8 +2,7 @@ import styled from "styled-components";
 import { MdClose } from "react-icons/md";
 
 export const MainPageWrapper = styled.div`
-  width: 80%;
-  max-width: 1400px;
+  width: 1400px;
   background-color: white;
   text-align: center;
   position: relative;
@@ -83,7 +82,7 @@ export const Space = styled.div`
   padding: 30px;
 `;
 
-export const Сhair = styled.button`
+export const Сhair = styled.button<{ boocked: boolean }>`
   width: 50px;
   height: 50px;
   border: 1px solid black;

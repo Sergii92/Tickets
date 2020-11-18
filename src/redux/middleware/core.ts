@@ -1,7 +1,8 @@
 import { applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
 
-const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+const devtools = (window && (window as any))
+  .__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
 const composeEnchancers = devtools ? devtools : compose;
 

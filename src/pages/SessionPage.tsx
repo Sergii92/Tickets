@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { dataActions } from "../reducers/Session/actions";
-import { selectPlaces } from "../reducers/Session/selectors";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { Button } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
+
+import { dataActions, selectPlaces } from "../redux/ducks/session";
+
 import {
   SessionPageWrapper,
   Info,
@@ -14,14 +13,19 @@ import {
   Сhair,
 } from "../styled/pages";
 
-const SessionPage = ({ sesssion, modalIsOpen, setModalIsOpen, closeModal }) => {
+const SessionPage = ({
+  sesssion,
+  modalIsOpen,
+  setModalIsOpen,
+  closeModal,
+}: any) => {
   const dispatch = useDispatch();
 
-  const placesData = useSelector(selectPlaces);
+  const placesData: Array<any> = useSelector(selectPlaces);
 
   const freePlaces = placesData
-    .filter((playces) => playces.sessionID === sesssion.id)
-    .filter((place) => place.boocked === false);
+    .filter((places: any) => places.sessionID === sesssion.id)
+    .filter((place: any) => place.boocked === false);
 
   const sessionID = localStorage.getItem("id");
 
@@ -32,12 +36,11 @@ const SessionPage = ({ sesssion, modalIsOpen, setModalIsOpen, closeModal }) => {
     }
   }, []);
 
-  const selectchair = (id) => {
-    console.log(id);
+  const selectchair = (id: number) => {
     dispatch(dataActions.bookedPlace(id));
   };
 
-  const pudPlacesData = (data) => {
+  const putPlacesData = (data: Array<any>) => {
     dispatch(dataActions.putPlaces(data));
   };
 
@@ -46,7 +49,6 @@ const SessionPage = ({ sesssion, modalIsOpen, setModalIsOpen, closeModal }) => {
       {modalIsOpen && (
         <SessionPageWrapper>
           <CloseModalButton
-            aria-label="Close modal"
             onClick={() => {
               closeModal();
             }}
@@ -76,7 +78,7 @@ const SessionPage = ({ sesssion, modalIsOpen, setModalIsOpen, closeModal }) => {
                           key={place.id}
                           onClick={() => selectchair(place.id)}
                           boocked={place.boocked}
-                        ></Сhair>
+                        />
                       );
                     })}
               </Row>
@@ -85,7 +87,7 @@ const SessionPage = ({ sesssion, modalIsOpen, setModalIsOpen, closeModal }) => {
                   <Button
                     variant="primary"
                     size="lg"
-                    onClick={() => pudPlacesData(placesData)}
+                    onClick={() => putPlacesData(placesData)}
                   >
                     Reserve
                   </Button>

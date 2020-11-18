@@ -1,4 +1,4 @@
-export const helperBoockedPlace = (obj, arr, id) => {
+export const helperBoockedPlace = (obj: any, arr: Array<any>, id: number) => {
   const newPlaces = arr.map((place) => {
     if (place.id === id) {
       return {
@@ -18,7 +18,7 @@ export const helperBoockedPlace = (obj, arr, id) => {
   };
 };
 
-export const helperGetPlaces = (obj, arr) => {
+export const helperGetPlaces = (obj: any, arr: Array<any>) => {
   return {
     ...obj,
     places: arr,
