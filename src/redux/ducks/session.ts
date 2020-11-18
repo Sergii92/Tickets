@@ -19,15 +19,15 @@ export const TYPES = {
 
 ///////////REDUCER//////////////
 
-// interface sessionState {
-//   days: Array<any>;
-//   sessions: Array<object>;
-//   ticket: any;
-// }
-// interface actionType {
-//   type: string;
-//   payload: any;
-// }
+interface IsessionState {
+  days: Array<any>;
+  sessions: Array<object>;
+  ticket: any;
+}
+interface IactionType {
+  type: string;
+  payload: any;
+}
 
 const initialState = {
   days: [],
@@ -37,7 +37,10 @@ const initialState = {
   },
 };
 
-export const dataReducer = (state = initialState, action) => {
+export const dataReducer = (
+  state: IsessionState = initialState,
+  action: IactionType
+) => {
   switch (action.type) {
     case TYPES.FETCH_DATA_SUCCESS:
       return {
@@ -76,44 +79,44 @@ export const dataActions = {
   fetchData: () => ({
     type: TYPES.FETCH_DAYS,
   }),
-  fetchDataSuccess: (data) => ({
+  fetchDataSuccess: (data: Array<any>) => ({
     type: TYPES.FETCH_DATA_SUCCESS,
     payload: data,
   }),
-  getSessionID: (id) => ({
+  getSessionID: (id: number) => ({
     type: TYPES.GET_SESSION_ID,
     payload: id,
   }),
   fetchSession: () => ({
     type: TYPES.FETCH_SESSIONS,
   }),
-  fetchSessionsSuccess: (data) => ({
+  fetchSessionsSuccess: (data: Array<any>) => ({
     type: TYPES.FETCH_SESSIONS_SUCCESS,
     payload: data,
   }),
   fetchPlaces: () => ({
     type: TYPES.FETCH_PLACES,
   }),
-  fetchPlacesSuccess: (data) => ({
+  fetchPlacesSuccess: (data: Array<any>) => ({
     type: TYPES.FETCH_PLACES_SUCCESS,
     payload: data,
   }),
-  bookedPlace: (id) => ({
+  bookedPlace: (id: number) => ({
     type: TYPES.BOOKED_PLACE,
     payload: id,
   }),
-  putPlaces: (data) => ({
+  putPlaces: (data: Array<any>) => ({
     type: TYPES.PUT_PLACES,
     payload: data,
   }),
 };
 //////////////Selectors////////
-export const selectDays = (state) => state.data.days;
+export const selectDays = (state: any) => state.data.days;
 
-export const selectSessions = (state) => state.data.sessions;
-export const selectPlaces = (state) => state.data.ticket.places;
+export const selectSessions = (state: any) => state.data.sessions;
+export const selectPlaces = (state: any) => state.data.ticket.places;
 
-export const selectSessionID = (state) => state.data.sessionID;
+export const selectSessionID = (state: any) => state.data.sessionID;
 
 ///////////Saga/////////
 
@@ -129,7 +132,7 @@ const fetchPlacesUrl = () => {
   return fetch(`${API.TICKETS}`);
 };
 
-const update = ({ payload }) => {
+const update = ({ payload }: IactionType) => {
   return fetch(`${API.TICKETS}/1000`, {
     method: "PUT",
     headers: {
@@ -142,9 +145,9 @@ const update = ({ payload }) => {
 
 export function* fetchSessionsWorker() {
   try {
-    const responce = yield call(fetchSessionUrl);
+    const responce: any = yield call(fetchSessionUrl);
 
-    const data = yield apply(responce, responce.json);
+    const data: Array<any> = yield apply(responce, responce.json, []);
     if (responce.status !== 200) {
       throw new Error("error");
     }
@@ -157,7 +160,7 @@ export function* fetchSessionsWorker() {
 export function* fetchDays() {
   try {
     const responce = yield call(fetchDay);
-    const data = yield apply(responce, responce.json);
+    const data: Array<any> = yield apply(responce, responce.json, []);
     if (responce.status !== 200) {
       throw new Error("error");
     }
@@ -169,7 +172,7 @@ export function* fetchDays() {
 export function* fetchPlacesWorker() {
   try {
     const responce = yield call(fetchPlacesUrl);
-    const data = yield apply(responce, responce.json);
+    const data: Array<any> = yield apply(responce, responce.json, []);
     if (responce.status !== 200) {
       throw new Error("error");
     }
