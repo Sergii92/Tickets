@@ -82,11 +82,11 @@ export const Space = styled.div`
   padding: 30px;
 `;
 
-export const Сhair = styled.button<{ boocked: boolean }>`
+export const Сhair = styled.button<{ booked: boolean }>`
   width: 50px;
   height: 50px;
   border: 1px solid black;
-  background-color: ${({ boocked }) => (boocked === true ? "red" : "green")};
+  background-color: ${({ booked }) => (booked === true ? "red" : "green")};
   margin-left: 5px;
   outline: none;
   cursor: pointer;

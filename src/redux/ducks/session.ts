@@ -1,10 +1,18 @@
 import { apply, call, put, takeEvery } from "redux-saga/effects";
 
-import { helperBoockedPlace, helperGetPlaces } from "./helpers";
+import { helperBookedPlace, helperGetPlaces } from "./helpers";
 import { API } from "../../constants/api";
+import {
+  IsessionState,
+  IactionType,
+  Itypes,
+  IplaceData,
+  IsessionData,
+  Iday,
+} from "../../interfaces";
 
-////////////TYPES//////////
-export const TYPES = {
+/************************ TYPES ************************/
+export const TYPES: Itypes = {
   FETCH_DAYS: "FETCH_DATA",
   FETCH_DATA_SUCCESS: "FETCH_DATA_OK",
   FETCH_SESSIONS: "FETCH_SESSIONS",
@@ -17,17 +25,7 @@ export const TYPES = {
   PUT: "PUT",
 };
 
-///////////REDUCER//////////////
-
-interface IsessionState {
-  days: Array<any>;
-  sessions: Array<object>;
-  ticket: any;
-}
-interface IactionType {
-  type: string;
-  payload: any;
-}
+/********************* REDUCER ***********************/
 
 const initialState = {
   days: [],
@@ -62,7 +60,7 @@ export const dataReducer = (
     case TYPES.BOOKED_PLACE:
       return {
         ...state,
-        ticket: helperBoockedPlace(
+        ticket: helperBookedPlace(
           state.ticket,
           state.ticket.places,
           action.payload
@@ -73,13 +71,13 @@ export const dataReducer = (
   }
 };
 
-/////////action/////////
+/********************* action ************************/
 
 export const dataActions = {
   fetchData: () => ({
     type: TYPES.FETCH_DAYS,
   }),
-  fetchDataSuccess: (data: Array<any>) => ({
+  fetchDataSuccess: (data: Array<Iday>) => ({
     type: TYPES.FETCH_DATA_SUCCESS,
     payload: data,
   }),
@@ -90,14 +88,14 @@ export const dataActions = {
   fetchSession: () => ({
     type: TYPES.FETCH_SESSIONS,
   }),
-  fetchSessionsSuccess: (data: Array<any>) => ({
+  fetchSessionsSuccess: (data: Array<IsessionData>) => ({
     type: TYPES.FETCH_SESSIONS_SUCCESS,
     payload: data,
   }),
   fetchPlaces: () => ({
     type: TYPES.FETCH_PLACES,
   }),
-  fetchPlacesSuccess: (data: Array<any>) => ({
+  fetchPlacesSuccess: (data: Array<IplaceData>) => ({
     type: TYPES.FETCH_PLACES_SUCCESS,
     payload: data,
   }),
@@ -105,32 +103,26 @@ export const dataActions = {
     type: TYPES.BOOKED_PLACE,
     payload: id,
   }),
-  putPlaces: (data: Array<any>) => ({
+  putPlaces: (data: Array<IplaceData>) => ({
     type: TYPES.PUT_PLACES,
     payload: data,
   }),
 };
-//////////////Selectors////////
-export const selectDays = (state: any) => state.data.days;
+/*********************Selectors**********************/
+export const selectDays = (state: IsessionState | any) => state.data.days;
 
-export const selectSessions = (state: any) => state.data.sessions;
-export const selectPlaces = (state: any) => state.data.ticket.places;
+export const selectSessions = (state: IsessionState | any) =>
+  state.data.sessions;
+export const selectPlaces = (state: IsessionState | any) =>
+  state.data.ticket.places;
 
-export const selectSessionID = (state: any) => state.data.sessionID;
+/*********************Saga**************************/
 
-///////////Saga/////////
+const fetchDay = () => fetch(`${API.DAYS}`);
 
-const fetchDay = () => {
-  return fetch(`${API.DAYS}`);
-};
+const fetchSessionUrl = () => fetch(`${API.SESSIONS}`);
 
-const fetchSessionUrl = () => {
-  return fetch(`${API.SESSIONS}`);
-};
-
-const fetchPlacesUrl = () => {
-  return fetch(`${API.TICKETS}`);
-};
+const fetchPlacesUrl = () => fetch(`${API.TICKETS}`);
 
 const update = ({ payload }: IactionType) => {
   return fetch(`${API.TICKETS}/1000`, {
@@ -147,7 +139,7 @@ export function* fetchSessionsWorker() {
   try {
     const responce: any = yield call(fetchSessionUrl);
 
-    const data: Array<any> = yield apply(responce, responce.json, []);
+    const data: Array<IsessionData> = yield apply(responce, responce.json, []);
     if (responce.status !== 200) {
       throw new Error("error");
     }
@@ -160,7 +152,7 @@ export function* fetchSessionsWorker() {
 export function* fetchDays() {
   try {
     const responce = yield call(fetchDay);
-    const data: Array<any> = yield apply(responce, responce.json, []);
+    const data: Array<Iday> = yield apply(responce, responce.json, []);
     if (responce.status !== 200) {
       throw new Error("error");
     }

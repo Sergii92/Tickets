@@ -1,9 +1,14 @@
 import styled from "styled-components";
+import { Card } from "react-bootstrap";
 
 export const DayBlock = styled.div`
   padding: 0 10px;
   background-color: darkslategrey;
   text-align: center;
+`;
+
+export const CustomCard = styled(Card)`
+  cursor: pointer;
 `;
 
 export const Title = styled.p`

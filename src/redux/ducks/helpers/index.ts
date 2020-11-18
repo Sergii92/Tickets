@@ -1,9 +1,15 @@
-export const helperBoockedPlace = (obj: any, arr: Array<any>, id: number) => {
+import { IplaceData } from "../../../interfaces";
+
+export const helperBookedPlace = (
+  obj: any,
+  arr: Array<IplaceData>,
+  id: number
+) => {
   const newPlaces = arr.map((place) => {
     if (place.id === id) {
       return {
         ...place,
-        boocked: true,
+        booked: true,
       };
     } else {
       return {
@@ -18,7 +24,7 @@ export const helperBoockedPlace = (obj: any, arr: Array<any>, id: number) => {
   };
 };
 
-export const helperGetPlaces = (obj: any, arr: Array<any>) => {
+export const helperGetPlaces = (obj: any, arr: Array<IplaceData>) => {
   return {
     ...obj,
     places: arr,

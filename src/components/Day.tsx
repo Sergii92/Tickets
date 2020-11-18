@@ -5,10 +5,7 @@ import { Accordion, Card, CardDeck } from "react-bootstrap";
 import Session from "./Session";
 
 import { dataActions, selectSessions } from "../redux/ducks/session";
-
-interface ComponentProps {
-  day?: any;
-}
+import { ComponentProps, IsessionData } from "../interfaces";
 
 const Day = ({ day }: ComponentProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,15 +21,19 @@ const Day = ({ day }: ComponentProps) => {
     }
   };
 
-  const sessionsData: Array<any> = useSelector(selectSessions);
+  const sessionsData: Array<IsessionData> = useSelector(selectSessions);
 
   return (
     <Accordion>
-      <Card onClick={() => open()}>
-        <Accordion.Toggle as={Card.Header} eventKey={day.id}>
+      <Card onClick={open}>
+        <Accordion.Toggle
+          as={Card.Header}
+          eventKey={`${day.id}`}
+          style={{ cursor: "pointer" }}
+        >
           {day.name}
         </Accordion.Toggle>
-        <Accordion.Collapse eventKey={day.id}>
+        <Accordion.Collapse eventKey={`${day.id}`}>
           <Card.Body>
             <CardDeck>
               {sessionsData &&
