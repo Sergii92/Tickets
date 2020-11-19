@@ -986,7 +986,7 @@
         {
           "sessionID": 44,
           "id": 446,
-          "booked": false
+          "booked": true
         },
         {
           "sessionID": 45,
@@ -1046,7 +1046,7 @@
         {
           "sessionID": 46,
           "id": 466,
-          "booked": false
+          "booked": true
         },
         {
           "sessionID": 51,
@@ -1521,7 +1521,7 @@
         {
           "sessionID": 73,
           "id": 735,
-          "booked": false
+          "booked": true
         },
         {
           "sessionID": 73,
@@ -1551,7 +1551,7 @@
         {
           "sessionID": 74,
           "id": 745,
-          "booked": false
+          "booked": true
         },
         {
           "sessionID": 74,

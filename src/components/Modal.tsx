@@ -15,7 +15,7 @@ const MyModal = ({ show, handleClose, sesssion }: any) => {
   const notify = () => {
     toast.success("Booled Success !", {
       position: "top-center",
-      autoClose: 2000,
+      autoClose: 4000,
       transition: Zoom,
       hideProgressBar: false,
       closeOnClick: true,
@@ -38,7 +38,7 @@ const MyModal = ({ show, handleClose, sesssion }: any) => {
     notify();
     setTimeout(() => {
       handleClose();
-    }, 2000);
+    }, 4000);
   };
 
   return (
@@ -76,7 +76,7 @@ const MyModal = ({ show, handleClose, sesssion }: any) => {
             </Button>
             <ToastContainer
               position="top-center"
-              autoClose={2000}
+              autoClose={4000}
               hideProgressBar={false}
               newestOnTop={false}
               transition={Zoom}
