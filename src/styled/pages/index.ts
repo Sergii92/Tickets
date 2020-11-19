@@ -2,8 +2,7 @@ import styled from "styled-components";
 import { MdClose } from "react-icons/md";
 
 export const MainPageWrapper = styled.div`
-  width: 80%;
-  max-width: 1400px;
+  width: 1400px;
   background-color: white;
   text-align: center;
   position: relative;
@@ -18,7 +17,9 @@ export const MainPageWrapper = styled.div`
 
 export const SessionPageWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 1000px;
+  display: flex;
+  flex-direction: column;
   background-color: rgb(87, 97, 63);
   position: relative;
   z-index: 10;
@@ -29,7 +30,8 @@ export const SessionPageWrapper = styled.div`
 export const MainBlock = styled.div`
   width: 100%;
   display: flex;
-  height: 400px;
+  margin-bottom: 10px;
+  position: relative;
 `;
 
 export const DescriptionBlock = styled.div`
@@ -61,4 +63,34 @@ export const CloseModalButton = styled(MdClose)`
   height: 32px;
   padding: 0;
   z-index: 10;
+`;
+
+export const Space = styled.div`
+  width: 600px;
+  min-height: 200px;
+  border: 1px solid black;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizind: border-box;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  flex-wrap: wrap;
+  padding: 30px;
+`;
+
+export const Сhair = styled.button<{ booked: boolean }>`
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  background-color: ${({ booked }) => (booked === true ? "red" : "green")};
+  margin-left: 5px;
+  outline: none;
+  cursor: pointer;
+  &:hover {
+    background-color: navy;
+  }
 `;
