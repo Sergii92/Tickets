@@ -12,6 +12,7 @@ import { IplaceData } from "../interfaces";
 
 const MyModal = ({ show, handleClose, sesssion }: any) => {
   const dispatch = useDispatch();
+
   const notify = () => {
     toast.success("Booled Success !", {
       position: "top-center",
@@ -24,6 +25,7 @@ const MyModal = ({ show, handleClose, sesssion }: any) => {
       progress: undefined,
     });
   };
+
   const placesData: Array<IplaceData> = useSelector(selectPlaces);
 
   const freePlaces: Array<IplaceData> = placesData

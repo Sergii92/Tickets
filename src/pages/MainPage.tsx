@@ -1,20 +1,14 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 
 import Day from "../components/Day";
 import { MainPageWrapper } from "../styled/pages";
-
-import { dataActions, selectDays } from "../redux/ducks/session";
 import { Iday } from "../interfaces";
 
-const MainPage = () => {
-  const dispatch = useDispatch();
+interface Props {
+  days: Array<Iday>;
+}
 
-  const days: Array<Iday> = useSelector(selectDays);
-  useEffect(() => {
-    dispatch(dataActions.fetchData());
-  }, []);
-
+const MainPage = ({ days }: Props) => {
   return (
     <MainPageWrapper>
       {days && days.map((day: Iday) => <Day day={day} key={day.id} />)}
