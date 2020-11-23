@@ -1,14 +1,14 @@
 import React from "react";
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 
 import Session from "../components/Session";
-
+import { mock } from "./testMock";
 const mockStore = configureStore();
 
 describe("Session  Component", () => {
-  const store = mockStore({});
+  const store = mockStore(mock);
   const sessionProps = {
     daysId: 1,
     time: "10:00",
@@ -26,17 +26,6 @@ describe("Session  Component", () => {
         </Provider>
       );
       expect(component).toMatchSnapshot();
-    });
-    it("Find text", () => {
-      const component = shallow(
-        <Provider store={store}>
-          <Session sesssion={sessionProps}></Session>
-        </Provider>
-      );
-
-      // const node = component.find("p");
-
-      // expect(node.length).toEqual(2);
     });
   });
 

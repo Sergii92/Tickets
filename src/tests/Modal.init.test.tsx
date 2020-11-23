@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 
 import Modal from "../components/Modal";
-import { First } from "react-bootstrap/lib/Pagination";
 
 const mockStore = configureStore();
 
@@ -22,7 +21,7 @@ describe("Day component render", () => {
     },
   };
 
-  const store = mockStore(props);
+  const store = mockStore({});
   it("RENDER", () => {
     const component = shallow(
       <Provider store={store}>
@@ -31,14 +30,4 @@ describe("Day component render", () => {
     );
     expect(component).toMatchSnapshot();
   });
-  // it("////", () => {
-  //   const component = shallow(
-  //     <Provider store={store}>
-  //       <Modal {...props} />
-  //     </Provider>
-  //   );
-  //   // expect(component.find(".modal-title").first().text()).toEqual(
-  //   //   "Sunday session1"
-  //   // );
-  // });
 });

@@ -446,7 +446,7 @@
         {
           "sessionID": 14,
           "id": 146,
-          "booked": false
+          "booked": true
         },
         {
           "sessionID": 15,
