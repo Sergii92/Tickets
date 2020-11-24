@@ -12,6 +12,7 @@ import { IplaceData } from "../interfaces";
 
 const MyModal = ({ show, handleClose, sesssion }: any) => {
   const dispatch = useDispatch();
+
   const notify = () => {
     toast.success("Booled Success !", {
       position: "top-center",
@@ -24,11 +25,12 @@ const MyModal = ({ show, handleClose, sesssion }: any) => {
       progress: undefined,
     });
   };
+
   const placesData: Array<IplaceData> = useSelector(selectPlaces);
 
-  const freePlaces: Array<IplaceData> = placesData
-    .filter((places: IplaceData) => places.sessionID === sesssion.id)
-    .filter((place: IplaceData) => place.booked === false);
+  // const freePlaces: Array<IplaceData> = placesData
+  //   .filter((places: IplaceData) => places.sessionID === sesssion.id)
+  //   .filter((place: IplaceData) => place.booked === false);
 
   const selectchair = (id: number) => dispatch(dataActions.bookedPlace(id));
 
@@ -86,7 +88,15 @@ const MyModal = ({ show, handleClose, sesssion }: any) => {
               draggable
             />
           </Col>
-          <Col>Свободных мест:{freePlaces.length}</Col>
+          <Col>
+            Свободных мест:
+            {placesData &&
+              placesData
+                .filter(
+                  (places: IplaceData) => places.sessionID === sesssion.id
+                )
+                .filter((place: IplaceData) => place.booked === false).length}
+          </Col>
         </Row>
       </Modal.Footer>
     </Modal>

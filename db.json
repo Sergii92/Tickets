@@ -446,7 +446,7 @@
         {
           "sessionID": 14,
           "id": 146,
-          "booked": false
+          "booked": true
         },
         {
           "sessionID": 15,
@@ -621,7 +621,7 @@
         {
           "sessionID": 24,
           "id": 245,
-          "booked": false
+          "booked": true
         },
         {
           "sessionID": 24,
@@ -681,7 +681,7 @@
         {
           "sessionID": 26,
           "id": 265,
-          "booked": false
+          "booked": true
         },
         {
           "sessionID": 26,
@@ -836,7 +836,7 @@
         {
           "sessionID": 35,
           "id": 356,
-          "booked": false
+          "booked": true
         },
         {
           "sessionID": 36,
@@ -866,7 +866,7 @@
         {
           "sessionID": 36,
           "id": 366,
-          "booked": false
+          "booked": true
         },
         {
           "sessionID": 41,
@@ -931,7 +931,7 @@
         {
           "sessionID": 43,
           "id": 431,
-          "booked": false
+          "booked": true
         },
         {
           "sessionID": 43,
@@ -1181,7 +1181,7 @@
         {
           "sessionID": 55,
           "id": 553,
-          "booked": false
+          "booked": true
         },
         {
           "sessionID": 55,
@@ -1196,7 +1196,7 @@
         {
           "sessionID": 55,
           "id": 556,
-          "booked": false
+          "booked": true
         },
         {
           "sessionID": 56,
@@ -1226,7 +1226,7 @@
         {
           "sessionID": 56,
           "id": 566,
-          "booked": false
+          "booked": true
         },
         {
           "sessionID": 57,
@@ -1556,7 +1556,7 @@
         {
           "sessionID": 74,
           "id": 746,
-          "booked": false
+          "booked": true
         },
         {
           "sessionID": 75,

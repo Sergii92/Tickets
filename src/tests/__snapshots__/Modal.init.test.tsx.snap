@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Day component render RENDER 1`] = `ShallowWrapper {}`;
+
+exports[`Day component render get Modal snapshot 1`] = `ShallowWrapper {}`;
